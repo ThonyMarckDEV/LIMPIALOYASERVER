@@ -24,7 +24,7 @@ if (isset($_POST['correo']) && isset($_POST['codigo'])) {
         $mail->Port = 587;
 
         // Configuración del correo
-        $mail->setFrom('ecoalerta24@gmail.com', 'ECOALERTA');
+        $mail->setFrom('LimpialoYA@gmail.com', 'LimpialoYA');
         $mail->addAddress($correo_destino);  // Dirección del destinatario
 
         // Contenido del correo

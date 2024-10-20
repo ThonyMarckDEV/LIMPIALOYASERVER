@@ -9,7 +9,7 @@ $apellidos = $_POST['apellidos'];
 $email = $_POST['email'];
 $password = $_POST['password']; // Esta es la contraseña en texto claro
 $status = 'loggedOff'; // Valor por defecto
-$role = 'Usuario'; // Valor por defecto
+$role = 'usuario'; // Valor por defecto
 
 // Verificar si el nombre de usuario o correo ya existen
 $sql_check = "SELECT * FROM usuarios WHERE username = ? OR correo = ?";
