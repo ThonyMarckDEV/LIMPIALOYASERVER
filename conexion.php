@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // Cambia esto si usas otro usuario
 $password = ""; // Cambia esto si tienes una contraseña
-$dbname = "recogeloyadb"; // Nombre de tu base de datos
+$dbname = "limpialoyadb"; // Nombre de tu base de datos
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
