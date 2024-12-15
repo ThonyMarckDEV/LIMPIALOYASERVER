@@ -2,13 +2,6 @@
 // Configura el directorio donde se almacenarán las imágenes
 $upload_dir = 'uploads/';
 
-// Incluir el archivo que contiene la clase UrlHelper
-require_once 'UrlHelper.php';  // Asegúrate de poner la ruta correcta al archivo
-
-// Crear una instancia de UrlHelper
-$urlHelper = new UrlHelper();
-
-
 // Verificar si la carpeta de destino existe, si no, crearla
 if (!is_dir($upload_dir)) {
     mkdir($upload_dir, 0777, true);
@@ -24,22 +17,14 @@ if ($_FILES['image']['error'] == 0) {
     $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
     $new_file_name = uniqid('img_', true) . '.' . $file_ext;
     
-    // Definir la ruta completa donde se almacenará la imagen
     $file_path = $upload_dir . $new_file_name;
     
     // Mover el archivo temporal al directorio de destino
     if (move_uploaded_file($file_tmp, $file_path)) {
-        
-        // Obtener la URL base desde UrlHelper
-        $base_url = $urlHelper->getBaseUrl();
-        
-        // Concatenar la URL base con el path del archivo
-        $image_url = $base_url . $file_path;
-        
-        // Devolver la URL de la imagen subida
+        // Devolver solo la ruta del archivo subido
         echo json_encode([
             'status' => 'success',
-            'image_url' => $image_url
+            'image_url' => $file_path  // Solo la ruta del archivo, sin la base URL
         ]);
     } else {
         // Error al mover el archivo
